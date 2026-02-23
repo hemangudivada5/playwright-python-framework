@@ -1,0 +1,17 @@
+{
+  "qa": {
+    "base_url": "https://tutorialsninja.com/demo/",
+    "username": "testuser@mail.com",
+    "password": "Test@123"
+  },
+  "stage": {
+    "base_url": "https://tutorialsninja.com/demo/",
+    "username": "stageuser@mail.com",
+    "password": "Stage@123"
+  },
+  "prod": {
+    "base_url": "https://tutorialsninja.com/demo/",
+    "username": "produser@mail.com",
+    "password": "Prod@123"
+  }
+}
