@@ -1,36 +1,48 @@
 import os
+import logging
+
+
+
 
 import allure
-import pytest
+
 from datetime import datetime
 
 import pytest
 from playwright.sync_api import sync_playwright
 
+from utils import logger
+from utils.config_reader import config_reader
+
 
 def pytest_addoption(parser):
     parser.addoption("--browser_name", action="store", default="chrome", help="browser to use")
 
-@pytest.mark.fixture
-def browser_instance(request):
+@pytest.fixture
+def page(request):
     browser_name = request.config.getoption("--browser_name")
+    headed = request.config.getoption("headed")
+    headless = not headed
+    config = config_reader()
+    url = config["base_url"]
     with sync_playwright() as playwright:
         if browser_name == "chrome":
-            playwright.chromium.launch(headless=True)
+            browser = playwright.chromium.launch(headless=headless)
         elif browser_name == "firefox" :
-            playwright.firefox.launch(headless=True)
+            browser = playwright.firefox.launch(headless=headless)
         elif browser_name == "edge":
-            browser = playwright.chromium.launch(channel="msedge", headless=False)
+            browser = playwright.chromium.launch(channel="msedge", headless=headless)
         elif browser_name == "webkit":
-            browser = playwright.webkit.launch(headless=True)
+            browser = playwright.webkit.launch(headless=headless)
         else:
             raise ValueError("Invalid browser name")
-    context = browser.new_context()
-    page = context.new_page()
-    yield page
-    page.close()
-    browser.close()
-    context.close()
+        context = browser.new_context()
+        page = context.new_page()
+        page.goto(url)
+        yield page
+        page.close()
+        context.close()
+        browser.close()
 
 
 
@@ -49,7 +61,7 @@ def pytest_runtest_makereport(item, call):
             os.makedirs("screenshots", exist_ok=True)
 
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            screenshot_path = f"screenshots/{item.name}_{timestamp}.png"
+            screenshot_path = f"reports/screenshots/{item.name}_{timestamp}.png"
 
             # Capture screenshot
             page.screenshot(path=screenshot_path)
@@ -62,7 +74,7 @@ def pytest_runtest_makereport(item, call):
             )
 
         # Attach log file to Allure
-        log_path = "logs/test.log"
+        log_path = os.path.join(os.getcwd(), "reports", "logs", f"{item.name}.log")
 
         if os.path.exists(log_path):
             allure.attach.file(
@@ -71,3 +83,33 @@ def pytest_runtest_makereport(item, call):
                 attachment_type=allure.attachment_type.TEXT
             )
 
+
+
+
+
+
+
+@pytest.fixture
+def logger(request):
+
+    test_name = request.node.name
+
+    logs_dir = os.path.join(os.getcwd(), "reports", "logs")
+    os.makedirs(logs_dir, exist_ok=True)
+
+    log_file = os.path.join(logs_dir, f"{test_name}.log")
+
+    logger = logging.getLogger(test_name)
+    logger.setLevel(logging.INFO)
+
+    if logger.hasHandlers():
+        logger.handlers.clear()
+
+    file_handler = logging.FileHandler(log_file, mode="w")
+    formatter = logging.Formatter(
+        "%(asctime)s - %(levelname)s - %(message)s"
+    )
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+
+    return logger
