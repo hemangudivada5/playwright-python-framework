@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","34596","test_Verify_Register_Account_Functionality_By_Providing_All_Fields[chromium]","tests","2026-02-23","broken","2026-02-23","","Register_test","",""
+"","0","test_sample","","2026-02-23","passed","2026-02-23","","test_sample","",""
