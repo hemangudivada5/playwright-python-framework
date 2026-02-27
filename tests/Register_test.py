@@ -65,12 +65,14 @@ def test_verify_Register_Option_In_Register_page_Works(page, logger):
     assert "Your Personal Details" in Personal_Details_Text
 
 def test_verify_Error_Msg_displayed_when_register_without_privacypolicy(page, logger):
-    page.locator("//span[text()='My Account']").click()
-    page.locator("//a[text()='Register']").click()
-    page.get_by_placeholder("First Name").fill("hemanth")
-    page.get_by_placeholder("Last Name").fill("Chand")
-    page.get_by_placeholder("E-Mail").fill("chandugudivada10@gmail.com")
-    page.get_by_placeholder("Telephone").fill("1234567890")
-    page.locator("//input[@id='input-password']").fill("Hemanth@1234")
-    page.locator("//input[@id='input-confirm']").fill("Hemanth@1234")
-    page.locator("//input[@type='submit']").click()
+    register_Page = RegisterPage(page, logger)
+    register_Page.open_register_page()
+    register_Page.Verify_Register_Without_Selecting_Private_Policy(
+        "Hemanth",
+        "Chand",
+        "chandugudivada10@gmail.com",
+        "aabbccdd",
+        "aabbccdd",
+        "1234567890")
+    Private_Policy_Warning_Text = register_Page.No_Privacy_Policy_Warning()
+    assert "Warning: You must agree to the Privacy Policy!" in Private_Policy_Warning_Text

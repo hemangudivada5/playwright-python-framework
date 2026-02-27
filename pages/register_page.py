@@ -77,3 +77,21 @@ class RegisterPage(BasePage):
     def Verify_Register_Page_From_Personal_Details_Message(self):
         return self.get_text(self.Personal_Details_Confirm_Text)
 
+    def Verify_Register_Without_Selecting_Private_Policy(
+        self,
+        first_name,
+        last_name,
+        email,
+        password,
+        confirm_password,
+        telephone_number,
+    ):
+        self.fill(self.FIRST_NAME, first_name)
+        self.fill(self.LAST_NAME, last_name)
+        self.fill(self.EMAIL, email)
+        self.fill(self.TELEPHONE, telephone_number)
+        self.fill(self.PASSWORD, password)
+        self.fill(self.PASSWORD_CONFIRM, confirm_password)
+        self.click(self.NEWSLETTER)
+        self.click(self.SUBMIT_BUTTON)
+
