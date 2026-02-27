@@ -1,11 +1,4 @@
-from conftest import page
 from pages.register_page import RegisterPage
-from pages.register_sucess_page import RegisterSuccessPage
-from utils import logger
-from utils.config_reader import config_reader
-from datetime import datetime
-
-from playwright.sync_api import Playwright, expect
 
 from utils.data_generator import generate_Email_Time_Stamp
 
@@ -15,21 +8,21 @@ def test_Verify_Register_Account_Functionality_By_Providing_All_Fields(page, log
     Email_Text = "hemanth"+generate_Email_Time_Stamp()+"@gmail.com"
     register_Page = RegisterPage(page, logger)
     register_Page.open_register_page()
-    register_Success_Page = register_Page.enter_user_details(
+    register_Page.enter_user_details(
         "Hemanth",
         "Chand",
         Email_Text,
         "aabbccdd",
         "aabbccdd",
         "1234567890")
-    success_Text = register_Success_Page.verify_register_success_text()
+    success_Text = register_Page.verify_register_success_text()
     assert "Your Account Has Been Created!" in success_Text
 
 
 def test_verify_Register_Account_Functionality_with_existing_email(page, logger):
     register_Page = RegisterPage(page, logger)
     register_Page.open_register_page()
-    register_Success_Page = register_Page.enter_user_details(
+    register_Page.enter_user_details(
         "Hemanth",
         "Chand",
         "chandugudivada10@gmail.com",

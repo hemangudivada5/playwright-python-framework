@@ -1,5 +1,4 @@
 from pages.base_page import BasePage
-from pages.register_sucess_page import RegisterSuccessPage
 
 
 class RegisterPage(BasePage):
@@ -14,6 +13,7 @@ class RegisterPage(BasePage):
     NEWSLETTER = "//input[@name='newsletter' and @value='1']"
     PRIVACY_POLICY = "//input[@name='agree' and @value='1']"
     SUBMIT_BUTTON = "//input[@type='submit']"
+    Account_Success_Text = "//div[@id='content']/h1"
     Duplicate_Email_Warning = "//div[@class='alert alert-danger alert-dismissible']"
     Privacy_Policy_Warning = "//div[@class='alert alert-danger alert-dismissible']"
     First_Name_Warning = "//input[@id='input-firstname']/following-sibling::div"
@@ -46,9 +46,12 @@ class RegisterPage(BasePage):
         self.click(self.NEWSLETTER)
         self.click(self.PRIVACY_POLICY)
         self.click(self.SUBMIT_BUTTON)
-        return RegisterSuccessPage(self.page, self.logger)
+
     def register_user_Without_Data(self):
         self.click(self.SUBMIT_BUTTON)
+
+    def verify_register_success_text(self):
+        return self.get_text(self.Account_Success_Text)
 
     def Duplicate_Email_Warning_Retrieval(self):
         return self.get_text(self.Duplicate_Email_Warning)
@@ -94,4 +97,3 @@ class RegisterPage(BasePage):
         self.fill(self.PASSWORD_CONFIRM, confirm_password)
         self.click(self.NEWSLETTER)
         self.click(self.SUBMIT_BUTTON)
-
