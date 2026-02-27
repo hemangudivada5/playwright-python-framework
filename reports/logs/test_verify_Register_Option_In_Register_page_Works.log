@@ -1,0 +1,4 @@
+2026-02-27 20:39:53,582 - INFO - clicking //span[text()='My Account']
+2026-02-27 20:39:53,681 - INFO - clicking //a[text()='Register']
+2026-02-27 20:39:53,967 - INFO - clicking //a[@class='list-group-item' and text()='Register']
+2026-02-27 20:39:54,693 - INFO - getting text //fieldset[@id='account']//legend
