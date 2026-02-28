@@ -1,17 +1,23 @@
 {
   "qa": {
     "base_url": "https://tutorialsninja.com/demo/",
-    "username": "testuser@mail.com",
-    "password": "Test@123"
+    "username": "chandugudivada10@mail.com",
+    "password": "aabbccdd",
+    "invalid_username": "chandugudivada",
+    "invalid_password": "password"
   },
   "stage": {
     "base_url": "https://tutorialsninja.com/demo/",
-    "username": "stageuser@mail.com",
-    "password": "Stage@123"
+    "username": "chandugudivada10@mail.com",
+    "password": "aabbccdd",
+    "invalid_username": "chandugudivada",
+    "invalid_password": "password"
   },
   "prod": {
     "base_url": "https://tutorialsninja.com/demo/",
-    "username": "produser@mail.com",
-    "password": "Prod@123"
+    "username": "chandugudivada10@mail.com",
+    "password": "aabbccdd",
+    "invalid_username": "chandugudivada",
+    "invalid_password": "password"
   }
 }
