@@ -10,6 +10,7 @@ class LoginPage(BasePage):
     Login_Verify_Text = "//a[text()='Edit your account information']"
     invalid_login_msg = "//div[text()='Warning: No match for E-Mail Address and/or Password.']"
 
+
     def open_Login_page(self):
         self.click(self.MY_ACCOUNT)
         self.click(self.Login_Option)

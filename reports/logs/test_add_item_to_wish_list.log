@@ -1,0 +1,10 @@
+2026-03-02 19:22:16,341 - INFO - clicking //span[text()='My Account']
+2026-03-02 19:22:16,419 - INFO - clicking //a[text()='Login']
+2026-03-02 19:22:16,648 - INFO - filling //input[@id='input-email']
+2026-03-02 19:22:16,680 - INFO - filling //input[@id='input-password']
+2026-03-02 19:22:16,694 - INFO - clicking //input[@value='Login']
+2026-03-02 19:22:17,726 - INFO - Login successful
+2026-03-02 19:22:17,727 - INFO - clicking //a[text()='Qafox.com']
+2026-03-02 19:22:18,006 - INFO - clicking (//a[text()='MacBook'])[2]
+2026-03-02 19:22:18,272 - INFO - clicking //button[@data-original-title='Add to Wish List']
+2026-03-02 19:22:19,132 - INFO - clicking //a[@id='wishlist-total']

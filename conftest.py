@@ -11,7 +11,7 @@ from datetime import datetime
 import pytest
 from playwright.sync_api import sync_playwright
 
-from utils import logger
+from pages.login_page import LoginPage
 from utils.config_reader import config_reader
 
 
@@ -113,3 +113,15 @@ def logger(request):
     logger.addHandler(file_handler)
 
     return logger
+
+@pytest.fixture(scope="function")
+def log_in_to_page(page, logger):
+    config = config_reader()
+    username = config["username"]
+    password = config["password"]
+    login = LoginPage(page, logger)
+    login.open_Login_page()
+    login.enter_credentials(username, password)
+    logger.info("Login successful")
+    return login
+
