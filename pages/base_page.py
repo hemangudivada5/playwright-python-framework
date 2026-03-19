@@ -14,3 +14,11 @@ class BasePage:
     def get_text(self,locator):
         self.logger.info(f"getting text {locator}")
         return self.page.locator(locator).text_content()
+
+    def hover(self, locator):
+        self.logger.info(f"hovering on {locator}")
+        self.page.locator(locator).hover()
+
+    def hover(self, locator):
+        self.logger.info(f"hovering on {locator}")
+        self.page.locator(locator).hover()

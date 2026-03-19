@@ -1,0 +1,15 @@
+2026-03-19 16:46:44,977 - INFO - clicking //span[text()='My Account']
+2026-03-19 16:46:45,056 - INFO - clicking //a[text()='Login']
+2026-03-19 16:46:45,339 - INFO - filling //input[@id='input-email']
+2026-03-19 16:46:45,366 - INFO - filling //input[@id='input-password']
+2026-03-19 16:46:45,378 - INFO - clicking //input[@value='Login']
+2026-03-19 16:46:46,176 - INFO - Login successful
+2026-03-19 16:46:46,177 - INFO - hovering on //a[@class='dropdown-toggle' and text()='Desktops']
+2026-03-19 16:46:46,245 - INFO - clicking //a[text()='Show AllDesktops']
+2026-03-19 16:46:46,479 - INFO - Collecting all product names and links
+2026-03-19 16:46:46,615 - INFO - Collected 12 products
+2026-03-19 16:46:46,615 - INFO - Opening product page for Apple Cinema 30"
+2026-03-19 16:46:48,087 - INFO - clicking (//button[@data-original-title='Add to Wish List'])[1]
+2026-03-19 16:46:48,135 - INFO - Opening product page for Canon EOS 5D
+2026-03-19 16:46:48,583 - INFO - clicking (//button[@data-original-title='Add to Wish List'])[1]
+2026-03-19 16:46:48,630 - INFO - clicking //a[@id='wishlist-total']
